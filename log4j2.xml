@@ -1,22 +1,20 @@
-<Configuration status="INFO">
-  <Appenders>
-   <RollingFile
-  name="rollingFile"
-	   fileName="/u02/eirsdata/logs/PlatformComponent/logs.log"
-	   filePattern="/u02/eirsdata/logs/PlatformComponent/logs-%d{dd-MMM}.log"
-  ignoreExceptions="false">
-  <PatternLayout>
-      <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} :%L - %msg%n</Pattern>
-  </PatternLayout>
-  <Policies>
-      <TimeBasedTriggeringPolicy interval="1"/>
-  </Policies>
-  <DefaultRolloverStrategy max="5" />
-  </RollingFile>
-  </Appenders>
-    <Loggers>
-        <Root level="info">         
-           <AppenderRef ref="rollingFile" />  
-        </Root>
-    </Loggers>
+<Configuration status="DEBUG">
+	<Appenders>
+		<RollingFile name="LogToFile" fileName="${env:DATA_HOME}/${sys:module_name}/logs/${sys:module_name}.log" 
+   filePattern="${env:DATA_HOME}/${sys:module_name}/logs/${sys:module_name}-%d{yyyy-MM-dd-HH}-%i.log">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%C] %-5level - %msg%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="250 MB"/>
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="LogToFile"/>
+		</Root>
+	</Loggers>
 </Configuration>
+
