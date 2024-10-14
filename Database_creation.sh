@@ -141,5 +141,9 @@ CREATE TABLE IF NOT EXISTS aud.audit_trail (
   PRIMARY KEY (id)
 );
 
+
+alter table file_to_sync rename column remarks to remark;
+alter table sys_generated_alert rename column remarks to remark;
+
 EOFMYSQL
 
