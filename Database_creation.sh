@@ -148,5 +148,7 @@ alter table sys_generated_alert rename column remarks to remark;
 alter table notification drop column feature_id ,drop column feature_name ,drop column receiver_user_type,drop column refer_table,drop column role_type  , drop column sub_feature ,drop column user_id,drop column authority_status ,add column  delivery_date_time timestamp  DEFAULT CURRENT_TIMESTAMP ;
 
   alter table operator_series rename column remarks to remark;
+
+alter table notification add column feature_name varchar(50) DEFAULT '';
 EOFMYSQL
 
